@@ -4,6 +4,16 @@ flaskで作成したUserのCRUD APIです
 
 3層アーキテクチャになるように実装しています
 
+## Getting Started
+
+docker環境立ち上げ
+
+```
+make up
+```
+
+makeのコマンド一覧については ```make help```で確認できます
+
 ## Direcotry
 
 ```
