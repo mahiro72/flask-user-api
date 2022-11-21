@@ -19,6 +19,7 @@ class UserRepository():
         filter(UserDto.id==id).\
         limit(1).\
         one()
+        # TODO 見つからなかった場合のエラーハンドリング
 
         return dto_to_user(dto),None
 

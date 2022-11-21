@@ -1,16 +1,18 @@
 # help ターゲットをデフォルトのターゲットにする
 .DEFAULT_GOAL := help
 
-# env
-ENV_LOCAL_FILE := docker-compose.env
-ENV_LOCAL = $(shell cat $(ENV_LOCAL_FILE))
-
 # docker
-DOCKER_COMPOSE:=docker-compose.yml
+DOCKER_DIR:=./docker
+DOCKER_COMPOSE:=$(DOCKER_DIR)/docker-compose.yml
 DOCKER_EXEC:=docker exec -it
+DOCKER_COMPOSE_PROJECT_NAME:=flask_user-crud
 
 DB_CONTAINER_NAME:=flask_user-crud_db
 SERVER_CONTAINER_NAME:=flask_user-crud_server
+
+# env
+ENV_LOCAL_FILE := $(DOCKER_DIR)/docker-compose.env
+ENV_LOCAL = $(shell cat $(ENV_LOCAL_FILE))
 
 # dir
 SRC_DIR:=./src
@@ -23,7 +25,9 @@ RM:=rm -rf
 
 .PHONY: up
 up: ## docker環境を立ち上げる
-	$(ENV_LOCAL) docker-compose -f $(DOCKER_COMPOSE) up
+	$(ENV_LOCAL) docker-compose \
+	-p $(DOCKER_COMPOSE_PROJECT_NAME) \
+	-f $(DOCKER_COMPOSE) up
 
 .PHONY: down
 down: ## dockerイメージを削除し、docker環境を閉じる

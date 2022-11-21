@@ -3,7 +3,7 @@ version: "3"
 services:
   server:
     build:
-      context: ./src
+      context: ../src
       dockerfile: Dockerfile
     container_name: flask_user-crud_server
     env_file:
@@ -13,20 +13,20 @@ services:
     tty: true
     restart: always
     volumes:
-      - ./src:/root/src
+      - ../src:/root/src
     depends_on:
       - db
 
   db:
     container_name: flask_user-crud_db
     build:
-      context: ./db
+      context: ../db
       dockerfile: Dockerfile
     ports:
       - 5432:5432
     volumes:
-      - ./db/init:/docker-entrypoint-initdb.d
-      - ./db/data:/var/lib/postgresql/data
+      - ../db/init:/docker-entrypoint-initdb.d
+      - ../db/data:/var/lib/postgresql/data
     env_file:
       - docker-compose.env
     tty: true

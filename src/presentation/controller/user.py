@@ -51,5 +51,5 @@ def models_to_jsons(us:list) -> list:
 def json_to_model(j:dict) -> User:
     return User(
         name  = j['name'],
-        age   = j['age']
+        age   = j['age'] #TODO なかった時key errorになるので直す
     )
