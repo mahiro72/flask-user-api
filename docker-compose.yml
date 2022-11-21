@@ -11,6 +11,7 @@ services:
     ports:
       - 8000:8000
     tty: true
+    restart: always
     volumes:
       - ./src:/root/src
     depends_on:
@@ -28,4 +29,5 @@ services:
       - ./db/data:/var/lib/postgresql/data
     env_file:
       - docker-compose.env
+    tty: true
     restart: always

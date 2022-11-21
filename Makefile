@@ -10,6 +10,7 @@ DOCKER_COMPOSE:=docker-compose.yml
 DOCKER_EXEC:=docker exec -it
 
 DB_CONTAINER_NAME:=flask_user-crud_db
+SERVER_CONTAINER_NAME:=flask_user-crud_server
 
 # dir
 SRC_DIR:=./src
@@ -42,10 +43,13 @@ del-volumes:del-data
 del-data:
 	$(RM) $(DATA_DIR)
 
-
 .PHONY: attach-db
 attach-db: ## dockerのdbコンテナにアクセスする
 	$(DOCKER_EXEC) $(DB_CONTAINER_NAME) bash
+
+.PHONY: attach-server
+attach-server: ## dockerのserverコンテナにアクセスする
+	$(DOCKER_EXEC) $(SERVER_CONTAINER_NAME) sh
 
 .PHONY: help
 help: ## コマンドの一覧を標示する
