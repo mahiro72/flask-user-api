@@ -2,12 +2,11 @@
 .DEFAULT_GOAL := help
 
 # env
-ENV_LOCAL_FILE := .env.local
+ENV_LOCAL_FILE := docker-compose.env
 ENV_LOCAL = $(shell cat $(ENV_LOCAL_FILE))
 
 # docker
-DOCKER_FILE_DIR:=./
-DOCKER_COMPOSE:=$(DOCKER_FILE_DIR)/docker-compose.yml
+DOCKER_COMPOSE:=docker-compose.yml
 DOCKER_EXEC:=docker exec -it
 
 DB_CONTAINER_NAME:=flask_user-crud_db
