@@ -14,7 +14,7 @@ class UserRepository():
         self.__session = session
 
     # userを取得し、それを返す
-    def get(self,id) -> Tuple[list,Error]:
+    def get(self,id:int) -> Tuple[list,Error]:
         dto = self.__session.query(UserDto).\
         filter(UserDto.id==id).\
         limit(1).\

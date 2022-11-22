@@ -9,7 +9,7 @@ class UserService():
     def __init__(self,repository:UserRepository) -> None:
         self.__repository = repository
     
-    def get(self,id) -> Tuple[User,Error]:
+    def get(self,id:int) -> Tuple[User,Error]:
         if id == 0:
             return None,Error(msg="id is invalid")
         return self.__repository.get(id)

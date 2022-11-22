@@ -4,11 +4,11 @@ from service.user import UserService
 from model.user import User
 
 
-class UserController():
+class UserController:
     def __init__(self,service:UserService) -> None:
         self.__service = service
 
-    def get(self,id) -> dict:
+    def get(self,id:int) -> dict:
         user,err = self.__service.get(id)
         if err != None:
             return err.create_resp()
